@@ -33,7 +33,7 @@ func (s Size) String() string {
 	return o
 }
 
-// Icon represents aterial design icon
+// Icon represents material design icon component
 type Icon struct {
 	vecty.Component
 	Name     Name
