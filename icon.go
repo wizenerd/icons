@@ -35,7 +35,7 @@ func (s Size) String() string {
 
 // Icon represents material design icon component
 type Icon struct {
-	vecty.Component
+	vecty.Core
 	Name     Name
 	Children vecty.MarkupOrComponentOrHTML
 	Size     Size
@@ -46,14 +46,16 @@ type Icon struct {
 func (i *Icon) Render() *vecty.HTML {
 	c := make(vecty.ClassMap)
 	c["material-icons"] = true
+	if i.Size.String() != "" {
+		c["md="+i.Size.String()] = true
+	}
 	if i.Classes != nil {
 		for k, v := range i.Classes {
 			c[k] = v
 		}
 	}
-	return elem.Span(
+	return elem.Italic(
 		c,
-		i.Size,
 		i.Children,
 		vecty.Text(string(i.Name)),
 	)
